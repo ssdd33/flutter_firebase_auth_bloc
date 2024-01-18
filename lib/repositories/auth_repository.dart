@@ -11,8 +11,12 @@ class AuthRepository {
 
   Stream<fbAuth.User?> get user => firebaseAuth.userChanges();
 
-  Future<void> signup(String email, String name, String password) async {
+  Future<void> signup(
+      {required String email,
+      required String name,
+      required String password}) async {
     try {
+      print('repo signup :  $password');
       final fbAuth.UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
 

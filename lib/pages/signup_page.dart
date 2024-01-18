@@ -141,9 +141,6 @@ class _SignupPageState extends State<SignupPage> {
 
                               return null;
                             },
-                            onSaved: (String? input) {
-                              _password = input;
-                            },
                           ),
                           const SizedBox(height: 20),
                           ElevatedButton(

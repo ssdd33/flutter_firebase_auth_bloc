@@ -15,7 +15,7 @@ class SignupCubit extends Cubit<SignupState> {
     emit(state.copyWith(signupStatus: SignupStatus.submitting));
 
     try {
-      await authRepository.signup(email, password, name);
+      await authRepository.signup(email: email, password: password, name: name);
       emit(state.copyWith(signupStatus: SignupStatus.success));
     } on CustomError catch (e) {
       emit(state.copyWith(signupStatus: SignupStatus.error, error: e));
