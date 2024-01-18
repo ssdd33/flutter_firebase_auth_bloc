@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695000586434",
+    "project_id": "auth-bloc-ys",
+    "storage_bucket": "auth-bloc-ys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695000586434:android:6d12aad453b67b845c435b",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth_bloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA19r_p7FGXDX_N1NYd2ZTyi51F7LJLgQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
