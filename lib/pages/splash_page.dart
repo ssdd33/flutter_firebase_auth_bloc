@@ -14,7 +14,16 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         print('splash: auth status changed');
         if (state.authStatus == AuthStatus.authenticated) {
-          Navigator.pushNamed(context, HomePage.routeName);
+          Navigator.pushNamedAndRemoveUntil(context, HomePage.routeName,
+              (route) {
+            print('route.settings.name: ${route.settings.name}');
+            print('modalRoute: ${ModalRoute.of(context)!.settings.name}');
+
+            final routeTo = route.settings.name;
+            final currentRoute = ModalRoute.of(context)!.settings.name;
+
+            return routeTo == currentRoute;
+          });
         } else if (state.authStatus == AuthStatus.unauthenticated) {
           Navigator.pushNamed(context, SigninPage.routeName);
         }
