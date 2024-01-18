@@ -11,11 +11,8 @@ class SigninPage extends StatefulWidget {
 class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('signin'),
-      ),
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('signin '),
       ),
     );
