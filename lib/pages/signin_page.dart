@@ -39,7 +39,9 @@ class _SigninPageState extends State<SigninPage> {
       child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: BlocConsumer<SigninCubit, SigninState>(
+            listenWhen: (previous, current) => previous != current,
             listener: (context, state) {
+              print('signin error!!!!!!!!!!!!!!!!!!');
               if (state.signinStatus == SigninStatus.error) {
                 errorDialog(context, state.error);
               }
