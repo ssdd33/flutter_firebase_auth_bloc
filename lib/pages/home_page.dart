@@ -1,4 +1,6 @@
 import 'package:firebase_auth_bloc/blocs/auth/auth_bloc.dart';
+import 'package:firebase_auth_bloc/pages/profile_page.dart';
+import 'package:firebase_auth_bloc/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,9 +23,19 @@ class _HomePageState extends State<HomePage> {
           title: const Text('home'),
           actions: [
             IconButton(
+              icon: const Icon(Icons.account_circle),
+              onPressed: () {
+                Navigator.pushNamed(context, ProfilePage.routeName);
+              },
+            ),
+            IconButton(
               icon: const Icon(Icons.exit_to_app),
               onPressed: () {
                 context.read<AuthBloc>().add(SignoutRequestedEvent());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SplashPage()));
               },
             )
           ],

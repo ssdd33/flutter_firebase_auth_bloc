@@ -12,7 +12,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        print('listener: $state');
+        print('splash: auth status changed');
         if (state.authStatus == AuthStatus.authenticated) {
           Navigator.pushNamed(context, HomePage.routeName);
         } else if (state.authStatus == AuthStatus.unauthenticated) {
@@ -20,7 +20,6 @@ class SplashPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print('builder: $state');
         return const Scaffold(
           body: Center(
             child: CircularProgressIndicator(),

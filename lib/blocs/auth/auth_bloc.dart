@@ -15,16 +15,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.authRepository,
   }) : super(AuthState.unknown()) {
     authSubscription = authRepository.user.listen((fbAuth.User? user) {
+      print('from fb user stream: $user');
       add(AuthStateChangeEvent(user: user));
     });
 
     on<AuthStateChangeEvent>((event, emit) {
-      emit(state.copyWith(
-        authStatus: event.user != null
-            ? AuthStatus.authenticated
-            : AuthStatus.unauthenticated,
-        user: event.user,
-      ));
+      print('authChangeEvent: ${event.user}');
+      if (event.user != null) {
+        emit(state.copyWith(
+            user: event.user, authStatus: AuthStatus.authenticated));
+      } else {
+        print('emit changed authstate');
+        emit(
+            state.copyWith(user: null, authStatus: AuthStatus.unauthenticated));
+      }
     });
 
     on<SignoutRequestedEvent>((event, emit) {
